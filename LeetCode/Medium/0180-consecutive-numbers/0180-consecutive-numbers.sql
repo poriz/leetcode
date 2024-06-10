@@ -8,4 +8,4 @@ WITH temp AS (
 )
 SELECT DISTINCT(num) AS ConsecutiveNums
 FROM temp
-WHERE (id1 - id) = 1 AND (id2 - id1) = 1 AND num = num1 AND num1 = num2
+WHERE (id1 - id) = 1 AND (id2 - id1) = 1 AND num = num1 AND num1 = num2;
