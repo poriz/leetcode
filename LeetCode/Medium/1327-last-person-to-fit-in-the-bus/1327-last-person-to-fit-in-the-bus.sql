@@ -1,6 +1,10 @@
-SELECT q1.person_name
-FROM Queue q1 JOIN Queue q2 ON q1.turn >= q2.turn
-GROUP BY q1.turn
-HAVING SUM(q2.weight) <= 1000
-ORDER BY SUM(q2.weight) DESC
+WITH CTE AS(
+    SELECT *,
+        SUM(weight) OVER (ORDER BY turn) AS Total_weight 
+    FROM Queue
+)
+SELECT person_name
+FROM CTE
+WHERE Total_weight <=1000
+ORDER BY Total_weight DESC
 limit 1
